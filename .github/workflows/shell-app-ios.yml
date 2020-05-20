@@ -40,6 +40,9 @@ jobs:
           key: ${{ runner.os }}-gems-${{ hashFiles('.ruby-version') }}-${{ hashFiles('Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
+      - run: echo "::set-env name=BUNDLE_BIN::$(pwd)/.direnv/bin"
+        working-directory: ''
+      - run: echo "::add-path::$BUNDLE_BIN"
       - name: install fastlane
         run: |
           bundle config path vendor/bundle
