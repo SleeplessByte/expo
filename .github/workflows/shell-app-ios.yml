@@ -31,7 +31,8 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn install --frozen-lockfile
         working-directory: tools-public
-      - run: bin/expotools ios-generate-dynamic-macros
+      - run: echo "::add-path::$(pwd)/bin"
+      - run: expotools ios-generate-dynamic-macros
       - uses: ruby/setup-ruby@v1
       - name: bundler cache
         uses: actions/cache@v1
